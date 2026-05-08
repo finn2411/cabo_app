@@ -647,14 +647,17 @@ class WinnerScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ClipRect(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  widthFactor: 0.63,
-                  child: Image.asset(
-                    'assets/logo/cabo_logo.png',
-                    height: 110,
-                    fit: BoxFit.contain,
+              const SizedBox(height: 16),
+              Center(
+                child: ClipRect(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    widthFactor: 0.63,
+                    child: Image.asset(
+                      'assets/logo/cabo_logo.png',
+                      height: 110,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
