@@ -137,27 +137,23 @@ class CaboHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // AppBar is the top header area in Material apps.
-      appBar: AppBar(
-        centerTitle: true,
-        toolbarHeight: 140,
-        // Use the logo image instead of plain text.
-        title: Image.asset(
-          'assets/logo/cabo_logo.png',
-          height: 80,
-          fit: BoxFit.contain,
-        ),
-      ),
       body: CaboBackground(
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'Play Cabo!',
-                style: Theme.of(context).textTheme.titleLarge,
+              ClipRect(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: 0.63,
+                  child: Image.asset(
+                    'assets/logo/cabo_logo.png',
+                    height: 250,
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   // Navigator pushes a new screen on top of the stack.
@@ -225,9 +221,6 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Player Setup'),
-      ),
       body: CaboBackground(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -494,9 +487,6 @@ class _ScoringScreenState extends State<ScoringScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Scoring'),
-      ),
       body: CaboBackground(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -651,27 +641,24 @@ class WinnerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final String titleText = winners.length == 1 ? 'Winner' : 'Winners';
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        toolbarHeight: 140,
-        title: ClipRect(
-          child: Align(
-            alignment: Alignment.centerLeft,
-            widthFactor: 0.63,
-            child: Image.asset(
-              'assets/logo/cabo_logo.png',
-              height: 90,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-      ),
       body: CaboBackground(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              ClipRect(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: 0.63,
+                  child: Image.asset(
+                    'assets/logo/cabo_logo.png',
+                    height: 110,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
               Text(
                 'Game Over!',
                 textAlign: TextAlign.center,
@@ -782,66 +769,23 @@ class CaboBackground extends StatelessWidget {
       children: [
         Positioned.fill(
           child: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [CaboColors.paper, Color(0xFFEEF7ED)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+            color: CaboColors.paper,
+          ),
+        ),
+        Positioned.fill(
+          child: Opacity(
+            opacity: 0.2,
+            child: Transform.scale(
+              scale: 1.1,
+              child: Image.asset(
+                'assets/logo/card_back.jpg',
+                fit: BoxFit.cover,
               ),
             ),
           ),
         ),
-        Positioned(
-          top: -60,
-          left: -40,
-          child: _DecorativeShape(
-            width: 180,
-            height: 120,
-            color: CaboColors.orange.withOpacity(0.18),
-            rotation: -0.2,
-          ),
-        ),
-        Positioned(
-          bottom: -40,
-          right: -30,
-          child: _DecorativeShape(
-            width: 200,
-            height: 140,
-            color: CaboColors.deepGreen.withOpacity(0.18),
-            rotation: 0.15,
-          ),
-        ),
         SafeArea(child: child),
       ],
-    );
-  }
-}
-
-class _DecorativeShape extends StatelessWidget {
-  const _DecorativeShape({
-    required this.width,
-    required this.height,
-    required this.color,
-    required this.rotation,
-  });
-
-  final double width;
-  final double height;
-  final Color color;
-  final double rotation;
-
-  @override
-  Widget build(BuildContext context) {
-    return Transform.rotate(
-      angle: rotation,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(24),
-        ),
-      ),
     );
   }
 }
