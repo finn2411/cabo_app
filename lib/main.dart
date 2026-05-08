@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // App entry point. Flutter starts here.
 void main() {
@@ -19,8 +18,11 @@ class CaboColors {
   static const Color butter = Color(0xFFFFF4D6);
 }
 
+const String _fontBaloo2 = 'Baloo2';
+const String _fontLilitaOne = 'LilitaOne';
+
 ThemeData _buildTheme() {
-  final TextTheme base = GoogleFonts.baloo2TextTheme();
+  final TextTheme base = ThemeData(fontFamily: _fontBaloo2).textTheme;
   return ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: CaboColors.paper,
@@ -29,11 +31,13 @@ ThemeData _buildTheme() {
       brightness: Brightness.light,
     ),
     textTheme: base.copyWith(
-      titleLarge: GoogleFonts.lilitaOne(
+      titleLarge: TextStyle(
+        fontFamily: _fontLilitaOne,
         fontSize: 28,
         color: CaboColors.ink,
       ),
-      titleMedium: GoogleFonts.lilitaOne(
+      titleMedium: TextStyle(
+        fontFamily: _fontLilitaOne,
         fontSize: 20,
         color: CaboColors.ink,
       ),
@@ -42,7 +46,8 @@ ThemeData _buildTheme() {
       backgroundColor: CaboColors.feltGreen,
       foregroundColor: Colors.white,
       elevation: 0,
-      titleTextStyle: GoogleFonts.lilitaOne(
+      titleTextStyle: TextStyle(
+        fontFamily: _fontLilitaOne,
         fontSize: 22,
         color: Colors.white,
       ),
@@ -53,7 +58,10 @@ ThemeData _buildTheme() {
         foregroundColor: Colors.white,
         shape: const StadiumBorder(),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-        textStyle: GoogleFonts.lilitaOne(fontSize: 18),
+        textStyle: const TextStyle(
+          fontFamily: _fontLilitaOne,
+          fontSize: 18,
+        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -62,7 +70,8 @@ ThemeData _buildTheme() {
         side: const BorderSide(color: CaboColors.orange, width: 2),
         shape: const StadiumBorder(),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-        textStyle: GoogleFonts.baloo2(
+        textStyle: const TextStyle(
+          fontFamily: _fontBaloo2,
           fontSize: 16,
           fontWeight: FontWeight.w700,
         ),
@@ -270,7 +279,8 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                         leading: const Icon(Icons.person),
                         title: Text(
                           _players[index],
-                          style: GoogleFonts.baloo2(
+                          style: const TextStyle(
+                            fontFamily: _fontBaloo2,
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: CaboColors.ink,
@@ -546,7 +556,8 @@ class _ScoringScreenState extends State<ScoringScreen> {
                                     flex: 3,
                                     child: Text(
                                       player.name,
-                                      style: GoogleFonts.baloo2(
+                                      style: const TextStyle(
+                                        fontFamily: _fontBaloo2,
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600,
                                         color: CaboColors.ink,
@@ -581,7 +592,8 @@ class _ScoringScreenState extends State<ScoringScreen> {
                                 bottom: 20,
                                 child: Text(
                                   'CABO!',
-                                  style: GoogleFonts.lilitaOne(
+                                  style: const TextStyle(
+                                    fontFamily: _fontLilitaOne,
                                     fontSize: 26,
                                     color: CaboColors.orange,
                                     letterSpacing: 1.5,
@@ -665,7 +677,8 @@ class WinnerScreen extends StatelessWidget {
               Text(
                 'Game Over!',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.lilitaOne(
+                style: const TextStyle(
+                  fontFamily: _fontLilitaOne,
                   fontSize: 28,
                   color: CaboColors.ink,
                 ),
@@ -691,7 +704,8 @@ class WinnerScreen extends StatelessWidget {
                 ),
                 child: Text(
                   winners.join(', '),
-                  style: GoogleFonts.lilitaOne(
+                  style: const TextStyle(
+                    fontFamily: _fontLilitaOne,
                     fontSize: 24,
                     color: CaboColors.orange,
                     letterSpacing: 1.2,
@@ -714,7 +728,8 @@ class WinnerScreen extends StatelessWidget {
                       child: ListTile(
                         title: Text(
                           score.name,
-                          style: GoogleFonts.baloo2(
+                          style: const TextStyle(
+                            fontFamily: _fontBaloo2,
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                             color: CaboColors.ink,
@@ -722,7 +737,8 @@ class WinnerScreen extends StatelessWidget {
                         ),
                         trailing: Text(
                           score.total.toString(),
-                          style: GoogleFonts.lilitaOne(
+                          style: const TextStyle(
+                            fontFamily: _fontLilitaOne,
                             fontSize: 18,
                             color: CaboColors.ink,
                           ),
