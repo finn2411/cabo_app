@@ -582,9 +582,10 @@ class _ScoringScreenState extends State<ScoringScreen> {
                                     child: TextField(
                                       controller: _roundControllers[index],
                                       enabled: !_gameOver,
+                                      textAlign: TextAlign.center,
                                       keyboardType: TextInputType.number,
                                       decoration: const InputDecoration(
-                                        labelText: 'Score',
+                                        hintText: 'Score',
                                       ),
                                     ),
                                   ),
