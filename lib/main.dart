@@ -567,8 +567,13 @@ class _ScoringScreenState extends State<ScoringScreen> {
                                   Expanded(
                                     flex: 2,
                                     child: Text(
-                                      'Total: ${player.total}',
+                                      player.total.toString(),
                                       textAlign: TextAlign.right,
+                                      style: const TextStyle(
+                                        fontFamily: _fontLilitaOne,
+                                        fontSize: 18,
+                                        color: CaboColors.ink,
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(width: 12),
@@ -652,6 +657,8 @@ class WinnerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String titleText = winners.length == 1 ? 'Winner' : 'Winners';
+    final List<FinalScore> sortedScores = List<FinalScore>.from(scores)
+      ..sort((a, b) => a.total.compareTo(b.total));
     return Scaffold(
       body: CaboBackground(
         child: Padding(
@@ -720,10 +727,10 @@ class WinnerScreen extends StatelessWidget {
               const SizedBox(height: 8),
               Expanded(
                 child: ListView.separated(
-                  itemCount: scores.length,
+                  itemCount: sortedScores.length,
                   separatorBuilder: (context, index) => const SizedBox(height: 8),
                   itemBuilder: (context, index) {
-                    final FinalScore score = scores[index];
+                    final FinalScore score = sortedScores[index];
                     return Card(
                       child: ListTile(
                         title: Text(
