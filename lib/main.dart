@@ -230,6 +230,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: CaboBackground(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -498,6 +499,7 @@ class _ScoringScreenState extends State<ScoringScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: CaboBackground(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -803,11 +805,14 @@ class CaboBackground extends StatelessWidget {
         Positioned.fill(
           child: Opacity(
             opacity: 0.2,
-            child: Transform.scale(
-              scale: 1.1,
-              child: Image.asset(
-                'assets/logo/card_back.jpg',
-                fit: BoxFit.cover,
+            child: Transform.translate(
+              offset: const Offset(0, 4),
+              child: Transform.scale(
+                scale: 1.15,
+                child: Image.asset(
+                  'assets/logo/card_back.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
