@@ -487,6 +487,7 @@ class _ScoringScreenState extends State<ScoringScreen> {
 
         _roundControllers[i].clear();
       }
+      _caboCallerIndex = null;
     });
 
     if (gameOver) {
